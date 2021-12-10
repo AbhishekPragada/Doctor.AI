@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+<title>Healthcare-AI</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link href="{{ url_for('static', filename='style.css') }}" rel='stylesheet' type='text/css'>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        Doctor.AI
+      </a>
+    </div>
+  </nav>
+  <div class="results-h">
+    <h1>Results</h1>
+  </div>
+
+  <div class = 'results-b'>
+    <div class = 'left-results'>
+      <p class = 'res-info1'>This is what you have entered: {{ output }}</p>
+      <p class = 'res-info2'>The Disease you may have is {{ class_ }}</p>
+    </div>
+    <div class = 'right-results'>
+      {{ explainer_|safe }}
+    </div>
+  </div>
+
+</body>
+</html>

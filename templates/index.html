@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<head>
+<title>Healthcare-AI</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        Doctor.AI
+      </a>
+      <p id="user-name"></p>
+    </div>
+  </nav>
+
+  <div class="main-div">
+    <img src="{{ url_for('static', filename='intro.gif') }}" alt="" width="600" height="600">
+    <div class="right"><span>With the increase in the use cases of Artificial Intelligence , AI becomes a part of the society
+    and comes under societal laws. But unlike humans technology is not hundred percent
+    responsible.<br>
+    There are now laws which can hold guilty corporations and developers if undesired results of
+    AI leads to cost life. <br>So for these high risk implementations the AI needs to be made
+    explainable. Three things are taken in mind while developing the algorithms are
+    accountability , transparency, and explainability.</span></div>
+  </div>
+
+  <div class="mid-container">
+    <h1>Get your results</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5>Step - 1</h5>
+              <img src="{{ url_for('static', filename='step_1.gif') }}" width="200" height="150">
+              <p>Check the symptoms</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5>Step - 2</h5>
+              <img src="{{ url_for('static', filename='step_2.gif') }}" width="200" height="150">
+              <p>Wait for the data to process</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5>Step - 3</h5>
+              <img src="{{ url_for('static', filename='step_3.gif') }}" width="200" height="150">
+              <p>Interpret the output</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = content-fill>
+    <form action="{{url_for('results')}}" method="POST">
+    <div class="grid-container">
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="cough" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Cough
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="chills" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Chills
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="shivering" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Shivering
+          </label>
+        </div>
+      </div>  
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="high_fever" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            High Fever
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="headache" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Headache
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="continuous_sneezing" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Continuous Sneezing
+          </label>
+        </div>
+      </div>  
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="mild_fever" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Mild Fever
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="nausea" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Nausea
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="sunken_eyes" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Sunken Eyes
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="diarrhoea" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Diarrhoea
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="yellowish_skin" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Yellowish Skin
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="malaise" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Malaise
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="weight_loss" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Weight Loss
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="swelled_lymph_nodes" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Swelled Lymph Nodes
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="pain_behind_the_eyes" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Pain Behind the Eyes
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="mood_swings" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Mood Swings
+          </label>
+        </div>
+      </div>
+
+
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="chest_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Chest Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="dizziness" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Dizziness
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="blood_in_sputum" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Blood in Sputum
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="fast_heart_rate" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Fast Heart Rate
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="breathlessness" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Breathlessness
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="sweating" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Sweating
+          </label>
+        </div>
+      </div> 
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="anxiety" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Anxiety
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="spinning_movements" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Spinning Movements
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="loss_of_balance" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Loss of Balance
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="weakness_of_one_body_side" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Weakness of Body on one side
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="lethargy" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Lethargy
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="irregular_sugar_level" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Irregular Sugar Level
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="restlessness" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Restlessness
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="blurred_and_distorted_vision" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Blurred and Distorted Vision
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="visual_disturbances" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Visual Disturbances
+          </label>
+        </div>
+      </div>
+      
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="joint_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Joint Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="stiff_neck" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Stiff Neck
+          </label>
+        </div>
+      </div> 
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="weakness_in_limbs" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Weakness in Limbs
+          </label>
+        </div>
+      </div> 
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="muscle_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Muscle Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="knee_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Knee Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="muscle_weakness" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Muscle Weakness
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="cramps" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Cramps
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="swelling_joints" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Swelling Joints
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="movement_stiffness" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Movement Stifness
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="neck_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Neck Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="fatigue" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Fatigue
+          </label>
+        </div>
+      </div>
+      
+      
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="stomach_pain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Stomach Pain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="acidity" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Acidity
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="indigestion" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Indigestion
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="loss_of_appetite" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Loss of Appetite
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="constipation" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Constipation
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="swelling_in_stomach" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Swelling in Stomach
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="obesity" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Obesity
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="weight_gain" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Weight Gain
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="passage_of_gases" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Passage of Gases
+          </label>
+        </div>
+      </div>
+
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="itching" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Itching
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="skin_rash" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Skin Rash
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="nodal_skin_eruptions" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Nodal Skin Eruptions
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="pus_filled_pimples" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Pus filled Pimples
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="skin_peeling" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Skin Peeling
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="blister" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Blister
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="red_spots_over_body" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Red Spots Over Body
+          </label>
+        </div>
+      </div>
+
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="ulcers_on_tongue" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Ulcers on Tounge
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="muscle_wasting" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Muscle Wasting
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="vomiting" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Vomiting
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="throat_irritation" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Throat Irritation
+          </label>
+        </div>
+      </div>
+
+
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="burning_micturition" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Burning Micturition
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="spotting_urination" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Spotting Urination
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="bladder_discomfort" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Bladder Discomfort
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="yellow_urine" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Yellow Urine
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="acute_liver_failure" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Acute Liver Failure
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="fluid_overload" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Fluid Overload
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="pain_during_bowel_movements" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Pain during Bowel Movements
+          </label>
+        </div>
+      </div>
+
+
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="toxic_look_(typhos)" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Toxic Look(Typhos)
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="family_history" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Family History
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="mucoid_sputum" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Mucoid Sputum
+          </label>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name='checkbox_values' value="lack_of_concentration" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Lack Of Concentration
+          </label>
+        </div>
+      </div>
+    </div>
+    <input type='submit' class='btn btn-secondary btn-lg' value='Check your results!' style="margin: 20px 650px">
+  </form>
+  <!-- <button type="button" class="btn btn-secondary btn-lg">Submit</button> -->
+  </div>
+
+   <div class="modal">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        Open your bank account <br />
+        in just 5 minutes
+      </h2>
+      <form class="modal__form">
+        <label class = 'fName'>First Name</label>
+        <input type="text"/>
+        <button class="btn--submit">Next step &rarr;</button>
+      </form>
+    </div>
+  <div class="overlay"></div>
+
+<script src='{{url_for('static',filename='test.js')}}'></script>
+</body>
+</html>
