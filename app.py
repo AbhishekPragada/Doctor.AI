@@ -1,5 +1,25 @@
+from lime import lime_tabular
+from flask import Flask, render_template, render_template_string, url_for, request
+import pickle, numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+
+with open('60_important_features_rf_fml.pkl', mode='rb') as f:
+  fairml_features=pickle.load(f)
+
+with open('rf_fairml_60_features_model.pkl', mode='rb') as f:
+  rf_fml=pickle.load(f)
+
+with open('class_names.pkl', mode='rb') as f:
+  class_names=pickle.load(f)
+
+with open('x_train.pkl', 'rb') as f:
+  x_train=pickle.load(f)
+
 app=Flask(__name__, template_folder='templates', 
           static_folder='static')
+
+train=x_train[fairml_features]
 
 # app=Flask(__name__, template_folder='your_name_for_template_folder')
 # start ngrok when flask is made to run
