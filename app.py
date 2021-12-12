@@ -48,4 +48,5 @@ def results():
     
     return render_template('results.html', explainer_=exp,  output=", ".join(symptoms), class_=label[0].title())
 
-app.run()
+if __name__ == "__main__":
+  app.run(debug=True)
